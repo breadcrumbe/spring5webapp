@@ -5,7 +5,9 @@ import guru.springframework.spring5webapp.domain.Book;
 import guru.springframework.spring5webapp.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
@@ -27,16 +29,15 @@ public class BootStrapData implements CommandLineRunner {
         authorRepository.save(eric);
         bookRepository.save(ddd);
 
-
-        Author rod = new Author("Rod","Johnson");
-        Book noEJB = new Book("J2EE Development without EJB","4984239847239");
+        Author rod = new Author("Rod", "Johnson");
+        Book noEJB = new Book("J2EE Development without EJB", "4984239847239");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
         authorRepository.save(rod);
         bookRepository.save(noEJB);
 
-System.out.println("Started in bootstrap");
-System.out.println("Number of books: "+bookRepository.count());
+        System.out.println("Started in bootstrap");
+        System.out.println("Number of books: " + bookRepository.count());
 
     }
 }
